@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    tools:context="com.example.midtermproject.CreateBlogFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            >
+
+            <EditText
+                android:id="@+id/title_createBlog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+
+                android:background="@drawable/custom_input_edit"
+                android:foregroundTint="#551313"
+                android:gravity="center"
+                android:hint="TITLE"
+                android:shadowColor="@color/cardview_dark_background"
+                android:textSize="27dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9.5"
+            >
+            <EditText
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:gravity="start"
+                android:background="@drawable/custom_input_edit"
+                android:id="@+id/thoughts_createBlog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Your thoughts.."
+                android:textSize="20dp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            >
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/author_createBlog"
+                        android:textColor="#990E2E"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:background="@drawable/custom_input_edit"
+                        android:padding="7dp"
+                        android:hint="Author:"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:textColor="#990E2E"
+                        android:id="@+id/date_createBlog"
+                        android:padding="7dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_input_edit"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:hint="Date:"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/createBlog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Blog"
+            android:layout_weight="0.4"/>
+    </LinearLayout>
+
+</FrameLayout>

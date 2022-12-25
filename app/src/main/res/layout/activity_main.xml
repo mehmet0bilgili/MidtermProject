@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:backgroundTintMode="screen"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleRow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:text="MY BLOG"
+            android:textColor="#B8446C"
+            android:textSize="34dp"
+            android:textStyle="italic"
+            android:fontFamily="monospace"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.7"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img" />
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:id="@+id/username_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:backgroundTint="#C34343"
+            android:gravity="left|center_vertical"
+
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/password_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:ems="10"
+            android:gravity="left|center_vertical"
+            android:hint="Password"
+            android:inputType="textPassword"
+             />
+
+        <CheckBox
+            android:id="@+id/rememberMes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:text="Remember me." />
+
+        <Button
+
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="SIGN IN"
+            app:backgroundTint="#44869A"
+            app:cornerRadius="10dp"
+            android:layout_weight="1.2"/>
+
+
+
+        <TextView
+            android:layout_marginTop="4dp"
+            android:id="@+id/createAccount"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Don't have an account. Create one."
+            android:layout_weight="0.8"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>
