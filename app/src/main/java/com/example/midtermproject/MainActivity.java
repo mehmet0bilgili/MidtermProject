@@ -5,11 +5,13 @@ package com.example.midtermproject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
 import android.app.Notification;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -19,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -47,7 +50,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
 
-    TextView title;
     EditText usernames,passwords;
     CheckBox remember ;
     ImageView imageView;
@@ -65,10 +67,10 @@ public class MainActivity extends AppCompatActivity  {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                InputStream in =null;
-                Bitmap bmp=null;
+                InputStream in;
+                Bitmap bmp;
 
-                int responseCode = -1;
+                int responseCode;
                 try{
 
                     URL url = new URL("https://www.sitereportcard.com/wp-content/uploads/2018/07/blog-post-ideas.jpeg");//"http://192.xx.xx.xx/mypath/img1.jpg
@@ -150,8 +152,6 @@ public class MainActivity extends AppCompatActivity  {
                     }
                 });
 
-
-
             }
 
         });
@@ -160,37 +160,21 @@ public class MainActivity extends AppCompatActivity  {
         passwords.setText(pref.getString("password", ""));
         usernames.setText(usernamess);
         remember.setChecked(pref.getBoolean("rememberMe", false));
-
-
-    }
-    public void DownloadImageFromPath(String path){
-        InputStream in =null;
-        Bitmap bmp=null;
-        ImageView iv = (ImageView)findViewById(R.id.logo);
-        int responseCode = -1;
-        try{
-
-            URL url = new URL(path);//"http://192.xx.xx.xx/mypath/img1.jpg
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setDoInput(true);
-            con.connect();
-            responseCode = con.getResponseCode();
-            if(responseCode == HttpURLConnection.HTTP_OK)
-            {
-                //download
-                in = con.getInputStream();
-                bmp = BitmapFactory.decodeStream(in);
-                in.close();
-                iv.setImageBitmap(bmp);
-            }
-
-        }
-        catch(Exception ex){
-            Log.e("Exception",ex.toString());
-        }
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit the app?")
+                .setMessage("Are you sure you want to exit the app?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        MainActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 
 }

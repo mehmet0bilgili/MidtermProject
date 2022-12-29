@@ -20,8 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -37,18 +35,6 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_create_account);
-        db=FirebaseFirestore.getInstance();
-        db.enableNetwork().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(CreateAccount.this, "Network enabled", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(CreateAccount.this, "Network enable failed", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
 
         setTitle("CREATE ACCOUNT");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -67,16 +53,29 @@ public class CreateAccount extends AppCompatActivity {
                     String usernames=username.getText().toString();
                     String emails=email.getText().toString();
                     String passwords=password.getText().toString();
-                    User newUser = new User(usernames,passwords,"","","",
-                            "","",emails,"",new ArrayList<Blog>(),false);
-                    db.collection("Users").document(usernames).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+                    User newUser = new User(usernames,
+                            passwords,
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            emails,
+                            "",
+                            new ArrayList<Blog>(),
+                            false);
+
+                    db.collection("Users").document(usernames).get().
+                            addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if(task.getResult().exists()){
                                 Toast.makeText(getApplicationContext(),"User Already Exist!",Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                db.collection("Users").document(usernames).set(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                db.collection("Users").document(usernames).set(newUser).
+                                        addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){

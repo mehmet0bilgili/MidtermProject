@@ -32,8 +32,9 @@
                 android:hint="Name"
                 android:textSize="20dp"
                 android:layout_weight="3"
-
-                android:paddingLeft="10dp"/>
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawablePadding="8dp"
+                android:padding="8dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -51,8 +52,10 @@
                 android:hint="Surname"
                 android:textSize="20dp"
                 android:layout_weight="3"
-
-                android:paddingLeft="10dp"/>
+                android:drawableLeft="@drawable/ic_baseline_man_3_24"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -67,10 +70,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/custom_input_edit"
+                android:drawableLeft="@drawable/ic_baseline_cake_24"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
                 android:hint="BirthDay"
                 android:textSize="20dp"
                 android:layout_weight="3"
-                android:paddingLeft="10dp"
                 />
 
         </LinearLayout>
@@ -86,11 +91,12 @@
                 android:id="@+id/education_prof_edit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_baseline_menu_book_24"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
                 android:hint="Education"
                 android:textSize="20dp"
-                android:layout_weight="3"
-
-                android:paddingLeft="10dp"/>
+                android:layout_weight="3"/>
 
         </LinearLayout>
         <LinearLayout
@@ -105,11 +111,12 @@
                 android:id="@+id/email_prof_edit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
                 android:hint="E-Mail"
                 android:textSize="20dp"
-                android:layout_weight="3"
-
-                android:paddingLeft="10dp"/>
+                android:layout_weight="3"/>
 
         </LinearLayout>
         <LinearLayout
@@ -125,11 +132,13 @@
                 android:id="@+id/gender_prof_edit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_baseline_sports_kabaddi_24"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
                 android:hint="Gender"
                 android:textSize="20dp"
-                android:layout_weight="3"
+                android:layout_weight="3" />
 
-                android:paddingLeft="10dp"/>
 
         </LinearLayout>
         <LinearLayout
@@ -146,9 +155,12 @@
                 android:hint="PhoneNo"
                 android:textSize="20dp"
                 android:layout_weight="3"
+                android:inputType="number"
                 android:background="@drawable/custom_input_edit"
-
-                android:paddingLeft="10dp"/>
+                android:drawableLeft="@drawable/ic_baseline_local_phone_24"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                />
 
         </LinearLayout>
         <Button

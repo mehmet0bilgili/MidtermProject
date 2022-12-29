@@ -10,11 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,14 +37,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.context = context;
         this.list = list;
         this.clickListener= clickListener;
-
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.listview_blog,parent,false);
-
         return  new MyViewHolder(v);
     }
 
@@ -88,7 +83,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 clickListener.onItemClick(list.get(position));
             }
         });
-
     }
 
     @Override
@@ -107,10 +101,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             thoughts=itemView.findViewById(R.id.home_thought);
             title=itemView.findViewById(R.id.home_title);
             imageView=itemView.findViewById(R.id.prof_image);
-
-
         }
-
     }
     public  interface ItemClickListener {
         public void onItemClick(Blog list);

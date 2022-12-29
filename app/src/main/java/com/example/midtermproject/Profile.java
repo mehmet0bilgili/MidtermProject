@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -48,22 +49,23 @@ public class Profile extends Fragment {
     FirebaseFirestore db= FirebaseFirestore.getInstance();
     StorageReference firebaseStorage = FirebaseStorage.getInstance().getReference("uploads/");
     StorageTask storageTask;
-    ImageView imgView;
-    Button btn ;
-    TextView textView;
-    //1
+    ImageView profileImg;
+    Button myBlogsBtn;
     View view;
     String names;
+
+    //1
     private static final int PICK_IMAGE_REQUEST = 1;
     //1
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         view=inflater.inflate(R.layout.fragment_profile, container, false);
         names = getArguments().getString("user");
-        imgView= view.findViewById(R.id.img_prof);
-        btn = view.findViewById(R.id.showBlog);
+        profileImg= view.findViewById(R.id.img_prof);
+        myBlogsBtn = view.findViewById(R.id.showBlog);
 
         new Thread(new Runnable() {
             @Override
@@ -80,7 +82,7 @@ public class Profile extends Fragment {
                                         @Override
                                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                             Bitmap bitmap= BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                                            imgView.setImageBitmap(bitmap);
+                                            profileImg.setImageBitmap(bitmap);
                                         }
                                     });
                                 } catch (IOException e) {
@@ -94,7 +96,7 @@ public class Profile extends Fragment {
         }).start();
 
 
-        imgView.setOnClickListener(new View.OnClickListener() {
+        profileImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(storageTask != null && storageTask.isInProgress()){
@@ -113,7 +115,7 @@ public class Profile extends Fragment {
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        myBlogsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MyBlogs myBlogs = new MyBlogs();
@@ -129,7 +131,7 @@ public class Profile extends Fragment {
         });
         //2
 
-        TextView username,name,surname,education,email,gender,phoneNo,birthday;
+        TextView name,surname,education,email,gender,phoneNo,birthday;
 
         name=view.findViewById(R.id.name_prof);
         surname=view.findViewById(R.id.surname_prof);
@@ -186,7 +188,6 @@ public class Profile extends Fragment {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(getContext(), "Image uploaded", Toast.LENGTH_SHORT).show();
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/longPharagraphs"
     tools:context=".longPharagraphs"
     android:layout_margin="10dp"
     android:backgroundTint="#e2e5e6">

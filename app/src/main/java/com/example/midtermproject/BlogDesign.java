@@ -1,28 +1,42 @@
 package com.example.midtermproject;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
+
 import java.util.ArrayList;
 
 public class BlogDesign extends AppCompatActivity  {
 
-    ImageButton img;
-    User activeUser;
     ImageButton home,profile,logout,createBlog,editprofile;
-    Button btn ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +59,8 @@ public class BlogDesign extends AppCompatActivity  {
         changeBackground(editprofile);
 
 
+
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,13 +76,11 @@ public class BlogDesign extends AppCompatActivity  {
                 changeBackground(createBlog);
                 changeBackground(editprofile);
                 setTitle("Main Page");
-
-
-
             }
 
 
         });
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,16 +101,29 @@ public class BlogDesign extends AppCompatActivity  {
 
 
         });
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BlogDesign.this,MainActivity.class);
-
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(BlogDesign.this);
+                builder.setMessage("Are you sure you want to log out?")
+                        .setTitle("Log out?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
-
-
         });
+
         createBlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,8 +140,6 @@ public class BlogDesign extends AppCompatActivity  {
                 changeBackground(editprofile);
                 setTitle("Create Blog");
             }
-
-
         });
 
         editprofile.setOnClickListener(new View.OnClickListener() {
@@ -136,9 +161,6 @@ public class BlogDesign extends AppCompatActivity  {
 
             }
         });
-
-
-
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -146,11 +168,52 @@ public class BlogDesign extends AppCompatActivity  {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.blogDesignFrame,fragment);
         fragmentTransaction.commit();
-
     }
+
     public void changeBackground(ImageButton button){
        button.setBackgroundColor(getWindow().getDecorView().getSolidColor());
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.feedback:
+                Intent intentFeedback= new Intent(BlogDesign.this,Feedback.class);
+                startActivity(intentFeedback);
+                return true;
+            case R.id.aboutUs:
+                Intent intentAboutUs = new Intent(BlogDesign.this, AboutUs.class);
+                startActivity(intentAboutUs);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Log out?")
+                .setMessage("Are you sure you want to log out?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        BlogDesign.this.finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+
 
 
 }

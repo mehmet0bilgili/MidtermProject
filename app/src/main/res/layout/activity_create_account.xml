@@ -19,14 +19,23 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
             android:hint="UserName"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
             android:hint="Email"
+            android:layout_marginTop="10dp"
             android:inputType="textEmailAddress"
             android:minHeight="48dp" />
 
@@ -35,6 +44,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
             android:inputType="textPassword"
             android:minHeight="48dp" />
 
@@ -43,6 +57,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="PasswordAgain"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/ic_baseline_lock_reset_24"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
             android:inputType="textPassword"
             android:minHeight="48dp" />
 

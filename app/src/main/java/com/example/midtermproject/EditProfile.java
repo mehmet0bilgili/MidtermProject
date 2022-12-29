@@ -1,7 +1,6 @@
 package com.example.midtermproject;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,11 +19,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+
 public class EditProfile extends Fragment {
 
     Button button;
     View view;
-    EditText username,name,surname,education,email,gender,phoneNo,date;
+    EditText name,surname,education,email,gender,phoneNo,date;
     String names;
 
 
@@ -47,6 +46,7 @@ public class EditProfile extends Fragment {
         getInfo();
 
 
+
         button = view.findViewById(R.id.save_changes_edit);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,6 @@ public class EditProfile extends Fragment {
                 db.collection("Users").document(names).update("phoneNo",phoneNo.getText().toString());
                 db.collection("Users").document(names).update("dateOfBirth",date.getText().toString());
                 Toast.makeText(getContext(), "Successfully Updated!", Toast.LENGTH_SHORT).show();
-
             }
         });
         return view;
@@ -81,9 +80,6 @@ public class EditProfile extends Fragment {
                 date.setText(task.getResult().getString("dateOfBirth"));
             }
         });
-
     }
-
-
 
 }

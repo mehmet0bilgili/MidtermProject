@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/more"
+    android:title=""
+    android:icon="@drawable/ic_baseline_more_vert_24"
+    app:showAsAction="always">
+
+    <menu>
+        <item android:id="@+id/feedback"
+            android:title="Feedback"
+            android:icon="@drawable/ic_baseline_feedback_24"
+            app:showAsAction="ifRoom"/>
+
+        <item android:id="@+id/aboutUs"
+            android:title="About Us"
+            android:icon="@drawable/ic_baseline_supervised_user_circle_24"
+            app:showAsAction="ifRoom"/>
+
+    </menu>
+
+</item>
+</menu>
