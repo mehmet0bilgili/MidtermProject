@@ -1,10 +1,10 @@
-# MyBlog
+# TaTaTa
 
-MyBlog is an Android application designed for blogging and user interaction.
+TaTaTa is an Android application designed for blogging and user interaction.
 
 ## Overview
 
-The MyBlog app allows users to create accounts, write and manage blog posts, view other users' blogs, edit profiles, and interact with the blogging community.
+The TaTaTa app allows users to create accounts, write and manage blog posts, view other users' blogs, edit profiles, and interact with the blogging community.
 
 ## Features
 
